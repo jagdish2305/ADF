@@ -26,9 +26,48 @@
 							"type": "DelimitedTextReadSettings"
 						}
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
+					{
+						"referenceName": "PP_jag",
+						"type": "DatasetReference",
+						"parameters": {
+							"pp_container": {
+								"value": "@pipeline().parameters.pp_container",
+								"type": "Expression"
+							},
+							"pp_directory": {
+								"value": "@pipeline().parameters.pp_input",
+								"type": "Expression"
+							},
+							"pp_filename": {
+								"value": "@pipeline().parameters.pp_input",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
 					{
 						"referenceName": "PP_jag",
 						"type": "DatasetReference"
@@ -51,7 +90,11 @@
 			},
 			"pp_archive": {
 				"type": "string",
-				"defaultValue": "archive1"
+				"defaultValue": "Project1/Archive"
+			},
+			"pp_output": {
+				"type": "string",
+				"defaultValue": "Project1/output"
 			}
 		},
 		"folder": {
