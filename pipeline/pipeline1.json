@@ -26,7 +26,26 @@
 							"type": "DelimitedTextReadSettings"
 						}
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
 					{
@@ -47,25 +66,41 @@
 							}
 						}
 					}
+				],
+				"outputs": [
+					{
+						"referenceName": "PP_files",
+						"type": "DatasetReference",
+						"parameters": {
+							"p_container": {
+								"value": "@pipeline().parameters.pp_container",
+								"type": "Expression"
+							},
+							"p_directory": {
+								"value": "@pipeline().parameters.pp_output",
+								"type": "Expression"
+							},
+							"p_filename": {
+								"value": "@pipeline().parameters.pp_filename",
+								"type": "Expression"
+							}
+						}
+					}
 				]
 			}
 		],
 		"parameters": {
 			"pp_container": {
-				"type": "string",
-				"defaultValue": "jagdatacontainer1"
+				"type": "string"
 			},
 			"pp_input": {
-				"type": "string",
-				"defaultValue": "Project1/input"
+				"type": "string"
 			},
 			"pp_filename": {
-				"type": "string",
-				"defaultValue": "SalesLTProduct.txt"
+				"type": "string"
 			},
 			"pp_output": {
-				"type": "string",
-				"defaultValue": "Project1/output"
+				"type": "string"
 			}
 		},
 		"folder": {
