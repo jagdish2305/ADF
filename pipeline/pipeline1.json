@@ -70,7 +70,21 @@
 				"outputs": [
 					{
 						"referenceName": "PP_jag",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"pp_container": {
+								"value": "@pipeline().parameters.pp_container",
+								"type": "Expression"
+							},
+							"pp_directory": {
+								"value": "@pipeline().parameters.pp_output",
+								"type": "Expression"
+							},
+							"pp_filename": {
+								"value": "@pipeline().parameters.pp_filename",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
