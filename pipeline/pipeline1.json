@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "PP_file",
+				"name": "pp_file",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -15,78 +15,8 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
-					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "PP_jag",
-						"type": "DatasetReference",
-						"parameters": {
-							"pp_container": {
-								"value": "@pipeline().parameters.pp_container",
-								"type": "Expression"
-							},
-							"pp_directory": {
-								"value": "@pipeline().parameters.pp_input",
-								"type": "Expression"
-							},
-							"pp_filename": {
-								"value": "@pipeline().parameters.pp_input",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "PP_jag",
-						"type": "DatasetReference",
-						"parameters": {
-							"pp_container": {
-								"value": "@pipeline().parameters.pp_container",
-								"type": "Expression"
-							},
-							"pp_directory": {
-								"value": "@pipeline().parameters.pp_output",
-								"type": "Expression"
-							},
-							"pp_filename": {
-								"value": "@pipeline().parameters.pp_filename",
-								"type": "Expression"
-							}
-						}
-					}
-				]
+					"enableStaging": false
+				}
 			}
 		],
 		"parameters": {
@@ -101,10 +31,6 @@
 			"pp_filename": {
 				"type": "string",
 				"defaultValue": "SalesLTProduct.txt"
-			},
-			"pp_archive": {
-				"type": "string",
-				"defaultValue": "Project1/Archive"
 			},
 			"pp_output": {
 				"type": "string",
