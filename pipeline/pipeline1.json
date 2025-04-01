@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Git1",
+				"name": "PP_file",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -26,41 +26,34 @@
 							"type": "DelimitedTextReadSettings"
 						}
 					},
-					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
+					"enableStaging": false
 				},
 				"inputs": [
 					{
-						"referenceName": "DelimitedText1",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "DelimitedText2",
+						"referenceName": "PP_jag",
 						"type": "DatasetReference"
 					}
 				]
 			}
 		],
+		"parameters": {
+			"pp_container": {
+				"type": "string",
+				"defaultValue": "jagdatacontainer1"
+			},
+			"pp_input": {
+				"type": "string",
+				"defaultValue": "Project1/input"
+			},
+			"pp_filename": {
+				"type": "string",
+				"defaultValue": "SalesLTProduct.txt"
+			},
+			"pp_archive": {
+				"type": "string",
+				"defaultValue": "archive1"
+			}
+		},
 		"folder": {
 			"name": "Git_link"
 		},
