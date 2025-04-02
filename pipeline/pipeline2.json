@@ -98,7 +98,7 @@
 			},
 			"p_op": {
 				"type": "string",
-				"defaultValue": "Project1/output"
+				"defaultValue": "Project1/Output"
 			},
 			"p_con": {
 				"type": "string",
