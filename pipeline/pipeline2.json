@@ -44,7 +44,45 @@
 						]
 					}
 				],
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"activities": [
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "pipeline1",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"pp_container": {
+										"value": "@pipeline().parameters.p_con",
+										"type": "Expression"
+									},
+									"pp_input": {
+										"value": "@pipeline().parameters.p_ip",
+										"type": "Expression"
+									},
+									"pp_filename": {
+										"value": "@item().name",
+										"type": "Expression"
+									},
+									"pp_output": {
+										"value": "@pipeline().parameters.p_op",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
 			}
 		],
 		"parameters": {
