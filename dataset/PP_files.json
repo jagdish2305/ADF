@@ -21,20 +21,11 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "@dataset().p_filename",
-					"type": "Expression"
-				},
-				"folderPath": {
-					"value": "@dataset().p_directory",
-					"type": "Expression"
-				},
-				"fileSystem": {
-					"value": "@dataset().p_container",
-					"type": "Expression"
-				}
+				"fileName": "salesproduct.csv",
+				"folderPath": "Project1/input",
+				"fileSystem": "jagdatacontainer1"
 			},
-			"columnDelimiter": "\t",
+			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
