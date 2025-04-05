@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "Project1/Output/data_flow_outpt.csv",
+				"folderPath": "Project1/Output/Karthibrotask.csv",
 				"fileSystem": "jagdatacontainer1"
 			},
 			"columnDelimiter": "\t",
