@@ -1,0 +1,44 @@
+{
+	"name": "DelimitedText6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"gwcon": {
+				"type": "string"
+			},
+			"gwdir": {
+				"type": "string"
+			},
+			"gwfile": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().gwfile",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().gwdir",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().gwcon",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
