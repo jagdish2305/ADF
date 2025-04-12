@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "SalesLTProduct.txt",
-				"folderPath": "Project1/Output",
+				"fileName": "part-00000-1241847e-bc74-4414-a860-57ca3726220f-c000.csv",
+				"folderPath": "Project1/Output/data_flow_outpt.csv",
 				"fileSystem": "jagdatacontainer1"
 			},
 			"columnDelimiter": ",",
