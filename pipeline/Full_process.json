@@ -101,7 +101,101 @@
 									]
 								}
 							],
-							"userProperties": []
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@activity('SQLGet').output.exists",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "SQLCOPYDATA",
+										"type": "Copy",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"source": {
+												"type": "DelimitedTextSource",
+												"storeSettings": {
+													"type": "AzureBlobFSReadSettings",
+													"recursive": true,
+													"enablePartitionDiscovery": false
+												},
+												"formatSettings": {
+													"type": "DelimitedTextReadSettings"
+												}
+											},
+											"sink": {
+												"type": "DelimitedTextSink",
+												"storeSettings": {
+													"type": "AzureBlobFSWriteSettings"
+												},
+												"formatSettings": {
+													"type": "DelimitedTextWriteSettings",
+													"quoteAllText": true,
+													"fileExtension": ".txt"
+												}
+											},
+											"enableStaging": false,
+											"translator": {
+												"type": "TabularTranslator",
+												"typeConversion": true,
+												"typeConversionSettings": {
+													"allowDataTruncation": true,
+													"treatBooleanAsNumber": false
+												}
+											}
+										},
+										"inputs": [
+											{
+												"referenceName": "getmetaSQL",
+												"type": "DatasetReference",
+												"parameters": {
+													"p_con": {
+														"value": "@item().container_name",
+														"type": "Expression"
+													},
+													"p_folder": {
+														"value": "@item().source_dir",
+														"type": "Expression"
+													},
+													"p_file": {
+														"value": "@item().file_name",
+														"type": "Expression"
+													}
+												}
+											}
+										],
+										"outputs": [
+											{
+												"referenceName": "getmetaSQL",
+												"type": "DatasetReference",
+												"parameters": {
+													"p_con": {
+														"value": "@item().container_name",
+														"type": "Expression"
+													},
+													"p_folder": {
+														"value": "@item().target_dir",
+														"type": "Expression"
+													},
+													"p_file": {
+														"value": "@item().file_name",
+														"type": "Expression"
+													}
+												}
+											}
+										]
+									}
+								]
+							}
 						}
 					]
 				}
