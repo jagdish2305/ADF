@@ -1,0 +1,34 @@
+{
+	"name": "POC_pipline2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Notebook1",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/jagwar2305@gmail.com/POC_deltaformat",
+					"baseParameters": {
+						"table_ip_path": "/mnt/saaccountjag2025march29/jagdatacontainer1/Project1/POC_PROJECT_FOLDER"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "poc_bricks",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "POC_PROJECT"
+		},
+		"annotations": []
+	}
+}

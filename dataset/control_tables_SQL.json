@@ -1,0 +1,46 @@
+{
+	"name": "control_tables_SQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "project_name",
+				"type": "varchar"
+			},
+			{
+				"name": "container_name",
+				"type": "varchar"
+			},
+			{
+				"name": "source_dir",
+				"type": "varchar"
+			},
+			{
+				"name": "target_dir",
+				"type": "varchar"
+			},
+			{
+				"name": "file_name",
+				"type": "varchar"
+			},
+			{
+				"name": "status",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "control_table"
+		}
+	}
+}
